@@ -1,1 +1,13 @@
 DEBUG = True
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'school_db',
+        'USER': 'school-user',
+        'PASSWORD': 'schoolpswd',
+        'HOST': 'postgres-school',
+        'PORT': 5432
+
+    }
+}

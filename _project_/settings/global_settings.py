@@ -39,7 +39,7 @@ ROOT_URLCONF = '_project_.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -63,10 +63,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': '',
-        'USER': "",
-        'PASSWORD': "",
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'postgres-school',
-        'PORT': ''
+        'PORT': 5432
 
     }
 }
