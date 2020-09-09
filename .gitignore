@@ -5,15 +5,15 @@
 # FRONTEND
 ################
 # dependencies
-ui/node_modules/
-ui/.pnp
+assets/node_modules/
+assets/.pnp
 .pnp.js
 
 # testing
-ui/coverage
+assets/coverage
 
 # production
-ui/build
+assets/build
 
 # misc
 .DS_Store
