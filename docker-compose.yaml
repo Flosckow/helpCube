@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  postgres-school:
+    image: postgres:12-alpine
+    container_name: postgres-school
+    restart: on-failure
+    volumes:
+      - postgres-school-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: school_db
+      POSTGRES_USER: school-user
+      POSTGRES_PASSWORD: schoolpswd
+
+  school-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: devstage
+    container_name: school-app
+    environment:
+      WAIT-HOSTS: postgres-school
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/home/school/app
+    ports:
+      - 8000:8000
+    tty: true
+    restart: on-failure
+    depends_on:
+      - postgres-school
+
+volumes:
+  postgres-school-data:
+
+networks:
+  default:
+    external:
+      name: school-network
