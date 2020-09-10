@@ -8,6 +8,7 @@ from users.views import UserLogin
 urlpatterns = [
     path('', TemplateView.as_view(template_name='landing.html'), name='landing'),
     path('login/', UserLogin.as_view(), name='login'),
+    path('dashboard/', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
 
     # base admin
     path('admin/', admin.site.urls),
