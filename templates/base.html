@@ -1,0 +1,19 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" {% if user.is_authentificated %}data-user="{{ user.id }}"{% endif %}>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
+    <title>{{ title|default:"HelpCube" }}</title>
+  </head>
+  <body data-csrf="{{ csrf_token }}">
+    <div class="container-fluid">
+      {% block base_content %}
+      {% endblock base_content %}
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock extra_js %}
+  </body>
+</html>
