@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.urls import reverse
 from django.views.generic.base import View
 
+from django.contrib import auth
 from users.utils import check_email
 from utils.utils import timing
 
@@ -25,34 +26,35 @@ class UserLogin(View):
             'login': self._login
         }.get(request.POST.get('action'), self._login)(request, **kwargs)
 
-    def _login(self, request):
+    @timing
+    def _login(self, request, **kwargs):
         """ Авторизация пользователя"""
-        if not self.kwargs.get('password'):
+
+        rpg = request.POST.get
+        if not rpg('password'):
             self.resp["errors"].update({"password": "Это обязательное поле"})
 
         try:
-            check_email(self.kwargs.get('email'))
+            check_email(rpg('email'))
         except ValueError as e:
             self.resp["errors"].update(e.args[0])
 
         if not self.resp['errors']:
-            from django.contrib import auth
-            email = self.kwargs.get('email')
-            password = self.kwargs.get('password')
+
+            email = rpg('email')
+            password = rpg('password')
+            print(f"Email {email} \nPassword {password}")
             user = auth.authenticate(email=email, password=password)
             if user is not None and user.is_active:
-                auth.login(self.request, user)
+                auth.login(request, user)
                 self.resp["payload"].update({
-                    "target": reverse()
+                    "target": reverse('dashboard')
                 })
+                return JsonResponse(self.resp, status=200)
             else:
                 self.resp["errors"].update({"auth_error": "Ошибка авторизации"})
 
-        return JsonResponse(self.resp)
-
-
-
-
+        return JsonResponse(self.resp, status=403)
 
     def _registration(self):
         """ Регистрация пользователя"""
@@ -61,4 +63,3 @@ class UserLogin(View):
     def _lost_password(self):
         """ Восстановление пароля """
         pass
-    
