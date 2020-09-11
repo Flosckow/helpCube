@@ -1,3 +1,40 @@
 <header>
-  HEader
+  <nav id="site-nav" class="navbar default navbar-fixed-top navbar-expand-md" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="navbar-brand">
+          <button class="navbar-toogler" type="button" data-toggle="collapse" data-target="#navbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a href="{% url 'landing' %}" class="navbar-brand">LOGO</a>
+
+        </div>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'landing' %}">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+
+        <button class="btn btn-primary" id="login">Sign In</button>
+        <button class="btn btn-secondary" id="registration">Sign Up</button>
+        {% include 'forms/login_form.html' %}
+
+
+      </div>
+    </div>
+  </nav>
 </header>
