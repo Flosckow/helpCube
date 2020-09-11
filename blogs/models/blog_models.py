@@ -1,14 +1,15 @@
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.contrib.auth.models import User
+
 from django.db import models
 
-from users.managers import PostActiveManager
+from blogs.managers import PostActiveManager
 
 
 class Post(models.Model):
     """Статьи пользователя"""
 
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name='blog_posts')
+    image = models.ImageField(upload_to="blog-images")
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
     text = RichTextUploadingField(blank=True)

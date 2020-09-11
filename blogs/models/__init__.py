@@ -1,0 +1,1 @@
+from blogs.models.blog_models import Post

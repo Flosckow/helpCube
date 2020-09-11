@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # project apps
     'users.apps.UsersConfig',
     'utils.apps.UtilsConfig',
+    'blogs.apps.BlogsConfig',
 
 ]
 
@@ -127,7 +128,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'None'
+    },
+}
 
 
 
