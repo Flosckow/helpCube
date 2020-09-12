@@ -1,6 +1,8 @@
 # Проект для начинающих
 
-##Использование Makefile в проекте
+https://trello.com/b/a1FZKUUf/helpcubeproject
+
+## Использование Makefile в проекте
 #### Сборка и первый запуск
 `docker network create school-network`
 
