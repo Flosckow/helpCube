@@ -263,3 +263,5 @@ dmypy.json
 # Ignore all local history of files
 .history
 local_settings.py
+/static/css/
+/static/js/
