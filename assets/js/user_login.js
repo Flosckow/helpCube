@@ -38,6 +38,14 @@ function user_login() {
       },
     });
   });
+  $(document).on('click', '#social-fb', (e) => {
+    e.preventDefault();
+    $.get('/social/fb', {}, (resp) => {
+      window.location.href = resp;
+    }).fail((error) =>{
+      console.log(error);
+    });
+  });
 }
 
 export default user_login;
