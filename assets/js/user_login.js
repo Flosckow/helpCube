@@ -42,7 +42,7 @@ function user_login() {
   $(document).on('click', '.social', (e) => {
     e.preventDefault();
     let target = $(e.target).data('target');
-    $.get(`/social/${target}`, {}, (resp) => {
+    $.get(`/social/${target}/`, {}, (resp) => {
       window.location.href = resp;
     }).fail((error) => {
       console.log(error);

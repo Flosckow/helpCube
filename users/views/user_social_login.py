@@ -87,17 +87,16 @@ class GithubView(SocialAuthMixin, View):
         user_emails = requests.get(
             self.SOCIAL_GITHUB_GET_USER_EMAIL + urlencode(params)
         ).json()
-        email = ""
-        name = ""
 
         # Получаем основной email пользователя
         for user_email in user_emails:
-            if user_email["primary"]:
-                email = user_email["email"]
-                break
+            email = user_email["email"] if user_email["primary"] else ""
 
-        if user_data["name"]:
-            name = user_data["name"]
+        # необязательный поле на github, у нас есть login(никнейм) - всегда заполнен
+        name = user_data.get("name", "")
+
+        if not email:
+            return {"error": AUTH_ERROR}
 
         return {
             "id": user_data["id"],
@@ -133,6 +132,7 @@ class GithubView(SocialAuthMixin, View):
                     headers={"accept": "application/json"},
                 ).json()
                 token = resp["access_token"]
+                print(token)
 
                 params = {"access_token": token}
                 resp = requests.get(

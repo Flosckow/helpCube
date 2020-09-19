@@ -11,7 +11,7 @@ urlpatterns = [
     path('', LandingPageView.as_view(), name='landing'),
     path('login/', UserLogin.as_view(), name='login'),
     path('social/fb/', FacebookView.as_view()),
-    path('social/github', GithubView.as_view()),
+    path('social/github/', GithubView.as_view()),
     path('dashboard/', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
 
     # base admin
