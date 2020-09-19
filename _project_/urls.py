@@ -3,11 +3,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from users.views import UserLogin
+from _project_.views import LandingPageView
+from users.views import UserLogin, FacebookView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='landing.html'), name='landing'),
+    path('', LandingPageView.as_view(), name='landing'),
     path('login/', UserLogin.as_view(), name='login'),
+    path('social/fb/', FacebookView.as_view()),
     path('dashboard/', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
 
     # base admin

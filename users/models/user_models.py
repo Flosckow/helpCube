@@ -18,6 +18,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     avatar = models.ImageField(_("Avatar"), upload_to="users/avatars", blank=True, null=True)
 
+    # social
+    social_google = models.CharField(_("Google account"), max_length=100, blank=True, null=True)
+    social_facebook = models.CharField(_("Facebook account"), max_length=100, blank=True, null=True)
+    social_github = models.CharField(_("Github account"), max_length=100, blank=True, null=True)
+    social_gitlab = models.CharField(_("Gitlab account"), max_length=100, blank=True, null=True)
+    social_bitbacket = models.CharField(_("Bitbacket account"), max_length=100, blank=True, null=True)
+
     # dates
     date_joined = models.DateTimeField(_("Creation date"), auto_now_add=True)
     last_login = models.DateTimeField(_("Last visited"), auto_now=True)
