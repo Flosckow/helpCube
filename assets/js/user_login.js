@@ -38,11 +38,13 @@ function user_login() {
       },
     });
   });
-  $(document).on('click', '#social-fb', (e) => {
+
+  $(document).on('click', '.social', (e) => {
     e.preventDefault();
-    $.get('/social/fb', {}, (resp) => {
+    let target = $(e.target).data('target');
+    $.get(`/social/${target}/`, {}, (resp) => {
       window.location.href = resp;
-    }).fail((error) =>{
+    }).fail((error) => {
       console.log(error);
     });
   });

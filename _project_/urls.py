@@ -5,11 +5,13 @@ from django.views.generic import TemplateView
 
 from _project_.views import LandingPageView
 from users.views import UserLogin, FacebookView
+from users.views.user_social_login import GithubView
 
 urlpatterns = [
     path('', LandingPageView.as_view(), name='landing'),
     path('login/', UserLogin.as_view(), name='login'),
     path('social/fb/', FacebookView.as_view()),
+    path('social/github/', GithubView.as_view()),
     path('dashboard/', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
 
     # base admin
