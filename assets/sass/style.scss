@@ -1,6 +1,6 @@
 @import "~materialize-css/sass/materialize";
-@import "fonts";
 @import "variables";
+@import "fonts";
 
 
 header {
@@ -41,6 +41,13 @@ header {
         align-self: center;
         @extend .white;
       }
+    }
+    & .socials-buttons {
+      width: 100%;
+      margin-top: 2em;
+      display: flex;
+      justify-content: space-between;
+
     }
   }
 }
