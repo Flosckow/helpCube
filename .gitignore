@@ -8,6 +8,7 @@
 assets/node_modules/
 assets/.pnp
 .pnp.js
+assets/package-lock.json
 
 # testing
 assets/coverage
