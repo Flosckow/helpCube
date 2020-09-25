@@ -19,3 +19,7 @@ log-app:
 	docker-compose -f docker-compose.yaml logs --tail=100 -f school-app
 shell-app:
 	docker-compose -f docker-compose.yaml exec school-app /bin/bash
+app-migrate:
+	docker-compose -f docker-compose.yaml exec school-app python manage.py migrate
+app-migrations:
+	docker-compose -f docker-compose.yaml exec school-app python manage.py makemigrations
