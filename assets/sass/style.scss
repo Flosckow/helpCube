@@ -29,6 +29,14 @@ header {
       & .row{
         padding: 7.5em 4em;
       }
+      .input-field.password{
+        margin-bottom: 0;
+      }
+      .lost-password{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+      }
     }
     & .context-wrapper{
       display: flex;
