@@ -1,16 +1,6 @@
 function user_login() {
-  $(document).on('click', '#navbar button', (e) => {
-    e.preventDefault();
-    let action = $(e.target).attr('id');
-    let form = $(document).find(`form[name=${action}-form]`);
-    if ($(form).hasClass('d-none')) {
-      $(form).removeClass('d-none');
-    } else {
-      $(form).addClass('d-none');
-    }
-  });
 
-  $(document).on('click', '#send-form', (e) => {
+  $(document).on('click', '#sent-form', (e) => {
     e.preventDefault();
     let form = $(e.target).closest('form');
     let formData = new FormData(form[0]);
@@ -31,7 +21,10 @@ function user_login() {
       error: (err) => {
         let errors = $.parseJSON(err.responseText).errors;
         if (!errors.auth_error) {
-          console.log(errors);
+          for (let k in errors) {
+            $(document).find(`[name=${k}]`).addClass('invalid');
+            $(document).find(`[name=${k}]`).closest('.input-field').find('.helper-text').attr('data-error', errors[k]);
+          }
         } else {
           $(form).find('.auth-error').find('span').html(`<span>${errors.auth_error}<span>`);
         }

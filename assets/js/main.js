@@ -1,5 +1,6 @@
-import { getCsrfToken } from './common';
+import {getCsrfToken} from './common';
 import user_login from './user_login';
+import M from 'materialize-css';
 
 const csrf_token = getCsrfToken();
 
@@ -20,8 +21,10 @@ window.$ = window.jQuery = require('jquery');
         }
       },
     });
-    // end CSRF protection
+    M.Tabs.init($('.tabs'));
+    M.Sidenav.init($('.sidenav'));
 
+    // end CSRF protection
     user_login();
   });
 })($);

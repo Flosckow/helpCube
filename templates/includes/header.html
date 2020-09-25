@@ -1,43 +1,87 @@
 <header>
-  <nav id="site-nav" class="navbar default navbar-fixed-top navbar-expand-md" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <div class="navbar-brand">
-          <button class="navbar-toogler" type="button" data-toggle="collapse" data-target="#navbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a href="{% url 'landing' %}" class="navbar-brand">LOGO</a>
+  <nav>
+    <ul id="mobile-menu" class="sidenav">
+      <li><a href="">About</a></li>
+      <li><a href="">Team work</a></li>
+      <li><a href="">Sign in</a></li>
+      <li><a href="">Sign up</a></li>
+    </ul>
+    <div class="nav-wrapper">
+      <a href="{% url 'landing' %}" class="navbar-brand">
+        <span class="large material-icons">add_circle</span>
+        <span>HelpCube</span>
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="">About</a></li>
+        <li><a href="">Team work</a></li>
+        <li><a href="">Sign in</a></li>
+        <li><a href="">Sign up</a></li>
+      </ul>
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+    </div>
 
+  </nav>
+  <div class="auth-wrapper">
+    <div class="row">
+      <div class="col s12 m6 l3 white auth-form">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col"><a class="active" href="#login">Sing in</a></li>
+              <li class="tab col"><a href="#register">Sign up</a></li>
+            </ul>
+          </div>
+          {# Login form #}
+          <div id="login" class="col s12">
+            <form id="login-form" autocomplete="off" data-action="login">
+              <div class="input-field email">
+                <input type="email" id="email" name="email" class="validate" autocomplete="new-email">
+                <label for="email">Email</label>
+                <span class="helper-text" data-error="" data-success="Valid email">Input your email address</span>
+              </div>
+              <div class="input-field password">
+                <input type="password" id="password" name="password" class="validate" autocomplete="new-password">
+                <label for="password">Password</label>
+                <span class="helper-text" data-error=""></span>
+              </div>
+              <button type="submit" id="sent-form" class="btn">Login</button>
+            </form>
+          </div>
+          {# Registration form #}
+          <div id="register" class="col s12">
+            <form class="register-form" autocomplete="off" data-action="register">
+              <div class="input-field">
+                <input type="email" id="email" name="email">
+                <label for="email">Email</label>
+              </div>
+              <div class="input-field">
+                <input type="text" id="first_name" name="first_name">
+                <label for="first_name">First name</label>
+              </div>
+              <div class="input-field">
+                <input type="text" id="last_name" name="last_name">
+                <label for="last_name">Last name</label>
+              </div>
+              <div class="input-field">
+                <input type="password" id="password1" name="password1">
+                <label for="password1">Password</label>
+              </div>
+              <div class="input-field">
+                <input type="password" id="password2" name="password2">
+                <label for="password2">Confirm Password</label>
+              </div>
+              <input type="submit" id="sent-form" class="btn" value="Registration">
+            </form>
+          </div>
         </div>
       </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'landing' %}">Главная</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-        </ul>
-
-        <button class="btn btn-primary" id="login">Sign In</button>
-        <button class="btn btn-secondary" id="registration">Sign Up</button>
-        <button class="btn btn-primary social" data-target="fb">FB</button>
-        <button class="btn btn-primary social" data-target="github">GB</button>
-
-        {% include 'forms/login_form.html' %}
-
-
+      <div class="col s12 m6 l9 presentation hide-on-med-and-down">
+        <div class="context-wrapper">
+          {#  TODO: продумать нормальный приветственный текст #}
+          <h4>Welcome... We are the start develop our project.</h4>
+          <p>This is project created for junior developers and other...</p>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
 </header>
