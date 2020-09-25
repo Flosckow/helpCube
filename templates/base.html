@@ -3,8 +3,9 @@
 <html lang="{{ LANGUAGE_CODE }}" {% if user.is_authentificated %}data-user="{{ user.id }}"{% endif %}
       theme="white-theme">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="description" content="This is a description" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_css %}{% endblock extra_css %}
     <title>{{ title|default:"HelpCube" }}</title>

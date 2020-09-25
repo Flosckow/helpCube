@@ -1,4 +1,6 @@
 import re
+import uuid
+from hashlib import sha384
 
 
 def check_email(email):
@@ -7,3 +9,7 @@ def check_email(email):
         raise ValueError({'email': 'Это обязательное поле.'})
     if not rex.match(email):
         raise ValueError({'email': 'Недействительный адрес.'})
+
+
+def user_token_generator() -> sha384:
+    return sha384(str(uuid.uuid4()).encode()).hexdigest()
