@@ -52,7 +52,6 @@ module.exports = {
     alias: {
       '@': path.join(__dirname, 'js/'),
       $: 'jquery',
-      '$': 'jquery',
     },
   },
   optimization: {

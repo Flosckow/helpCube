@@ -1,4 +1,55 @@
-@import '~bootstrap/scss/bootstrap';
+@import "~materialize-css/sass/materialize";
+@import "fonts";
+@import "variables";
+
+
+header {
+  height: 100vh;
+
+  .presentation {
+
+  }
+
+  .auth-wrapper {
+    background-image: url(https://picsum.photos/id/180/2400/1600);
+    background-size: 100% 100%;
+    display: flex;
+    width: 100%;
+    height: calc(100% - 64px);
+
+    & .row {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+
+    & .auth-form{
+      height: 100%;
+      & .row{
+        padding: 7.5em 4em;
+      }
+    }
+    & .context-wrapper{
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20em 10em;
+      & h4, & p{
+        align-self: center;
+        @extend .white;
+      }
+    }
+  }
+}
+
+nav {
+  @extend .blue, .lighten-1;
+}
+
+
 
 
 
