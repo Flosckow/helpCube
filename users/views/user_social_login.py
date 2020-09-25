@@ -100,9 +100,8 @@ class GithubView(SocialAuthMixin, View):
 
         return {
             "id": user_data["id"],
-            "login": user_data["login"],
+            "first_name": name if name else user_data["login"],
             "email": email,
-            "name": name,
         }
 
     def get(self, request, *args, **kwargs):
